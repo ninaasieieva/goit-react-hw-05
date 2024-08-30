@@ -1,8 +1,7 @@
-import css from './SearchBar.module.css';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
-function SearchBar({ onSearch }) {
-  const handleSubmit = event => {
+const SearchBar = ({ onSearch }) => {
+  const handelSubmit = event => {
     event.preventDefault();
 
     const searchValue = event.currentTarget.search.value.trim();
@@ -13,23 +12,18 @@ function SearchBar({ onSearch }) {
       onSearch(searchValue);
     }
   };
-
   return (
-    <header className={css.header}>
-      <form onSubmit={handleSubmit}>
-        <input
-          className={css.inputSerchValue}
-          name="search"
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search images and photos"
-        />
-        <button type="submit">Search</button>
-        <Toaster position="bottom-center" reverseOrder={false} />
-      </form>
-    </header>
+    <form onSubmit={handelSubmit}>
+      <input
+        name="search"
+        type="text"
+        autoComplete="off"
+        autoFocus
+        placeholder="Search movies" 
+      />
+      <button type="submit">Search</button>
+    </form>
   );
-}
+};
 
 export default SearchBar;
